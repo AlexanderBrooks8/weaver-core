@@ -248,7 +248,7 @@ def evaluate_classification(model, test_loader, dev, epoch, for_training=True, l
                 except KeyError:
                     mask = None
                 model_output = model(*inputs)
-                logits, label, mask = _flatten_preds(model_output, label=label, mask=mask)
+                logits = _flatten_preds(model_output, label=label, mask=mask)
                 scores.append(torch.softmax(logits.float(), dim=1).numpy(force=True))
 
                 if mask is not None:
